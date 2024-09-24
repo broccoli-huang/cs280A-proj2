@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .box{
+            display:inline-block;
+            margin:10px;
+        }
+        .box2{
+            display:inline-block;
+            margin:3px;
+        }
+        .container{
+            margin:0px;
+        }
+        .im{
+            margin: 10px;
+        }
+        .im2{
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center">Project 2</h1>
+        <h4 style="text-align:center">Fun with Filters and Frequencies!</h4>
+    <h2 style="text-align:center">Yuan-Hao Huang</h2>
+        <h4 style="text-align:center">yhhuang20@berkeley.edu</h4>
+    
+    <h2>Part 1.1</h2>
+    <div class="container">
+        <div class="box">The original image: <br><img src="Part1/cameraman/cameraman.png" width="260" class="im"></div>
+        <div class="box">Convolving with D_x: <br><img src="Part1/cameraman/Gau0/dim_dx.jpg" width="260" class="im"></div>
+        <div class="box">Convolving with D_y: <br><img src="Part1/cameraman/Gau0/dim_dy.jpg" width="260" class="im"></div>
+    </div>
+    <div class="container">
+        <div class="box">Gradient magnitude image: <br><img src="Part1/cameraman/Gau0/gradient_mag.jpg" width="260" class="im"></div>
+        <div class="box">Edge image (threshold = 0.1): <br><img src="Part1/cameraman/Gau0/edge 0.10.jpg" width="260" class="im"></div>
+    </div>
+    <p>The gradient magnitude image is constructed by calculating the RSS (square root of sum of square) of the partial derivatives of the image in the x and y direction. </p>
+
+    <h2>Part 1.2-1</h2>
+    <p>The Gaussian filter used in this section is a 7x7 filter with sigma=1. </p>
+    <div class="container">
+        <div class="box">Applying Gaussian filter to the original image: <br><img src="Part1/cameraman/Gau1/blurred.jpg" width="260" class="im"></div>
+        <div class="box">Convolving with D_x: <br><img src="Part1/cameraman/Gau1/dim_dx.jpg" width="260" class="im"></div>
+        <div class="box">Convolving with D_y: <br><img src="Part1/cameraman/Gau1/dim_dy.jpg" width="260" class="im"></div>
+    </div>
+    <div class="container">
+        <div class="box">Gradient magnitude image: <br><img src="Part1/cameraman/Gau1/gradient_mag.jpg" width="260" class="im"></div>
+        <div class="box">Edge image (threshold = 0.06): <br><img src="Part1/cameraman/Gau1/edge 0.06.jpg" width="260" class="im"></div>
+    </div>
+    <p>
+        Observation: With the Gaussian filter, the image becomes less noisy in the background but more blurred. 
+        The magnitude of gradient become significantly smaller, thus requires a smaller threshold to construct the edge image. 
+        The resulting edge image was much clearer than before. 
+    </p>
+
+    <h2>Part 1.2-2</h2>
+    <div class="container">
+        <div class="box">DoG filter X (conv(Gaussian, D_x)): <br><img src="Part1/cameraman/Gau2/dG_dx.jpg" width="260" class="im"></div>
+        <div class="box">DoG filter Y (conv(Gaussian, D_y)): <br><img src="Part1/cameraman/Gau2/dG_dy.jpg" width="260" class="im"></div>
+    </div>    
+    <div class="container">
+        <div class="box">Convolving with DoG_X: <br><img src="Part1/cameraman/Gau2/dim_dx.jpg" width="260" class="im"></div>
+        <div class="box">Convolving with DoG_Y: <br><img src="Part1/cameraman/Gau2/dim_dy.jpg" width="260" class="im"></div>
+    </div>
+    <div class="container">
+        <div class="box">Gradient magnitude image: <br><img src="Part1/cameraman/Gau2/gradient_mag.jpg" width="260" class="im"></div>
+        <div class="box">Edge image (threshold = 0.06): <br><img src="Part1/cameraman/Gau2/edge 0.06.jpg" width="260" class="im"></div>
+    </div>
+    <p>
+        The resulting images were exactly the same as the previous one (shown below)!
+        <div><img src="Part1/cameraman/Gau1/edge 0.06.jpg" width="260" class="im"></div>
+    </p>
+
+    <h2>Part 2.1</h2>
+    <div class="container">
+        <div class="box">The original image: <br><img src="Part2-1/taj/taj.jpg" width="260" class="im"></div>
+    </div> 
+    <p>
+        Now comes the sharpened version. 
+        We use a Gaussian filter of size 49x49 and sigma=8 to extract the high-frequency components. 
+        We also tried different valus of alphas (how many pieces of high-frequency components are added).
+    </p>
+    <div class="container">
+        <div class="box">ahpha = 0.5: <br><img src="Part2-1/taj/taj 8 0.5.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 1.0: <br><img src="Part2-1/taj/taj 8 1.0.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 2.0: <br><img src="Part2-1/taj/taj 8 2.0.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 4.0: <br><img src="Part2-1/taj/taj 8 4.0.jpg" width="260" class="im"></div>
+    </div>  
+    <p></p>
+        By increasing alpha, we can indeed sharpen the image. 
+        However, if alpha is too large (alpha = 4 in this case), the resulting image becomes kind of weird. 
+    </p> 
+    <p>
+        Here are some other examples. 
+        I took these photos during a trip to Hokkaido, Japan this summer. 
+        It was a fantastic place!
+    </p>
+    <div class="container">
+        <div class="box">The original image: <br><img src="Part2-1/5/5.jpg" width="260" class="im"></div>
+    </div> 
+    <div class="container">
+        <div class="box">ahpha = 0.5: <br><img src="Part2-1/5/5 8 0.5.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 1.0: <br><img src="Part2-1/5/5 8 1.0.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 2.0: <br><img src="Part2-1/5/5 8 2.0.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 4.0: <br><img src="Part2-1/5/5 8 4.0.jpg" width="260" class="im"></div>
+    </div>  
+    <div class="container">
+        <div class="box">The original image: <br><img src="Part2-1/4/4.jpg" width="260" class="im"></div>
+    </div> 
+    <div class="container">
+        <div class="box">ahpha = 0.5: <br><img src="Part2-1/4/4 8 0.5.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 1.0: <br><img src="Part2-1/4/4 8 1.0.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 2.0: <br><img src="Part2-1/4/4 8 2.0.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 4.0: <br><img src="Part2-1/4/4 8 4.0.jpg" width="260" class="im"></div>
+    </div>  
+    <div class="container">
+        <div class="box">Finally, here is a sharp image: <br><img src="Part2-1/sharp1 8 blurred/sharp1.jpg" width="260" class="im"></div>
+        <div class="box">and its blurred version: <br><img src="Part2-1/sharp1 8 blurred/sharp1 8 blurred.jpg" width="260" class="im"></div>
+    </div> 
+    <p>
+        Now we try to sharpen the blurred version. 
+    </p>
+    <div class="container">
+        <div class="box">ahpha = 0.5: <br><img src="Part2-1/sharp1 8 blurred/sharp1 8 blurred 8 0.5.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 1.0: <br><img src="Part2-1/sharp1 8 blurred/sharp1 8 blurred 8 1.0.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 2.0: <br><img src="Part2-1/sharp1 8 blurred/sharp1 8 blurred 8 2.0.jpg" width="260" class="im"></div>
+        <div class="box">ahpha = 4.0: <br><img src="Part2-1/sharp1 8 blurred/sharp1 8 blurred 8 4.0.jpg" width="260" class="im"></div>
+    </div>  
+    <p>
+        The resulting image does not look pretty well, especially the text on the rocket. 
+        The smoothing process erased this information, and the sharpening process was not able to recover it. 
+    </p>
+
+    <h2>Part 2.2</h2>
+    <p>
+        Here are some of the results. 
+        In order to make the high-frequency image more obvious, when adding two image, I used some weighted average instead of direct average. 
+        The weight of the high-frequency image is set to 1.5~2. 
+    </p>
+    <div class="container">
+        <div class="box">image 1 (near): <br><img src="Part2-2/man and cat/near.jpg" width="260" class="im"></div>
+        <div class="box">image 2 (far): <br><img src="Part2-2/man and cat/far.jpg" width="260" class="im"></div>
+        <div class="box">hybrid: <br><img src="Part2-2/man and cat/hybrid 4 6 1.5 .jpg" width="260" class="im"></div>
+    </div> 
+    <div class="container">
+        <div class="box">image 1 (near): <br><img src="Part2-2/hao and jus/near.jpg" width="260" class="im"></div>
+        <div class="box">image 2 (far): <br><img src="Part2-2/hao and jus/far.jpg" width="260" class="im"></div>
+        <div class="box">hybrid: <br><img src="Part2-2/hao and jus/hybrid 8 10 2 .jpg" width="260" class="im"></div>
+    </div> 
+    <div class="container">
+        <div class="box">image 1 (near): <br><img src="Part2-2/hao and cat/near.jpg" width="260" class="im"></div>
+        <div class="box">image 2 (far): <br><img src="Part2-2/hao and cat/far.jpg" width="260" class="im"></div>
+        <div class="box">hybrid: <br><img src="Part2-2/hao and cat/hybrid 2 3 2 .jpg" width="260" class="im"></div>
+    </div> 
+    <div class="container">
+        <div class="box">image 1 (near): <br><img src="Part2-2/hao and min/near.jpg" width="260" class="im"></div>
+        <div class="box">image 2 (far): <br><img src="Part2-2/hao and min/far.jpg" width="260" class="im"></div>
+        <div class="box">hybrid: <br><img src="Part2-2/hao and min/hybrid 8 9 2 .jpg" width="260" class="im"></div>
+    </div> 
+    <div class="container">
+        <div class="box">image 1 (near): <br><img src="Part2-2/AC and trump/near.jpg" width="260" class="im"></div>
+        <div class="box">image 2 (far): <br><img src="Part2-2/AC and trump/far.jpg" width="260" class="im"></div>
+        <div class="box">hybrid: <br><img src="Part2-2/AC and trump/hybrid 6 12 1.5 .jpg" width="260" class="im"></div>
+    </div> 
+    <p>Here is the frequency analysis of the last example. </p>
+    <div class="container">
+        <div class="box">image 1 (near): <br><img src="Part2-2/AC and trump/near.jpg" width="180" class="im"></div>
+        <div class="box">image 1 (high pass): <br><img src="Part2-2/AC and trump/near high 12.jpg" width="180" class="im"></div>
+        <div class="box">image 2 (far): <br><img src="Part2-2/AC and trump/far.jpg" width="180" class="im"></div>
+        <div class="box">image 2 (low pass): <br><img src="Part2-2/AC and trump/far low 6.jpg" width="180" class="im"></div>
+        <div class="box">hybrid: <br><img src="Part2-2/AC and trump/hybrid 6 12 1.5 .jpg" width="180" class="im"></div>
+    </div> 
+    <div class="container">
+        <div class="box">frequency analysis: <br><img src="Part2-2/AC and trump/near fourier.jpg" width="180" class="im"></div>
+        <div class="box">frequency analysis: <br><img src="Part2-2/AC and trump/near high 12 fourier.jpg" width="180" class="im"></div>
+        <div class="box">frequency analysis: <br><img src="Part2-2/AC and trump/far fourier.jpg" width="180" class="im"></div>
+        <div class="box">frequency analysis: <br><img src="Part2-2/AC and trump/far low 6 fourier.jpg" width="180" class="im"></div>
+        <div class="box">frequency analysis: <br><img src="Part2-2/AC and trump/hybrid 6 12 1.5  fourier.jpg" width="180" class="im"></div>
+    </div> 
+    <p>Failure example: </p>
+    <div class="container">
+        <div class="box">image 1 (near): <br><img src="Part2-2/lee and yo/near.jpg" width="260" class="im"></div>
+        <div class="box">image 2 (far): <br><img src="Part2-2/lee and yo/far.jpg" width="260" class="im"></div>
+        <div class="box">hybrid: <br><img src="Part2-2/lee and yo/hybrid 4 3 2 .jpg" width="260" class="im"></div>
+    </div> 
+    <p>
+        The image does not look much different when seeing from different distance. 
+        I guess it is because the high-frequency component (image 1) is too strong. 
+    </p>
+    
+    <h2>Part 2.3</h2>
+    <p>
+        The table below shows the intermediate steps of creating an oraple. 
+        The columns from left to right are: 
+        <ul>
+            <li>the Gaussian stack of apple, </li>
+            <li>the Laplacian stack of apple, </li>
+            <li>applying mask on the Laplacian stack of apple, </li>
+            <li>combining apple and orange of that apple, </li>
+            <li>applying mask on the Laplacian stack of orange, </li>
+            <li>the Laplacian stack of orange, </li>
+            <li>the Gaussian stack of orange. </li>
+        </ul>
+        The rows from top to bottom are:
+        <ul>
+            <li>level 0 of the stack, </li>
+            <li>level 2 of the stack, </li>
+            <li>level 4 of the stack, </li>
+            <li>level 6 of the stack. </li>
+        </ul>
+    </p>
+    <div class="container">
+        <div class="box2"><img src="Part2-3/oraple/A G0.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/A L0.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/A cut0.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/mix 0.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B cut0.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B L0.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B G0.jpg" width="130" class="im2"></div>
+    </div> 
+    <div class="container">
+        <div class="box2"><img src="Part2-3/oraple/A G2.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/A L2.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/A cut2.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/mix 2.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B cut2.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B L2.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B G2.jpg" width="130" class="im2"></div>
+    </div>
+    <div class="container">
+        <div class="box2"><img src="Part2-3/oraple/A G4.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/A L4.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/A cut4.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/mix 4.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B cut4.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B L4.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B G4.jpg" width="130" class="im2"></div>
+    </div>
+    <div class="container">
+        <div class="box2"><img src="Part2-3/oraple/A G6.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/A L6.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/A cut6.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/mix 6.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B cut6.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B L6.jpg" width="130" class="im2"></div>
+        <div class="box2"><img src="Part2-3/oraple/B G6.jpg" width="130" class="im2"></div>
+    </div>
+    <div class="container">
+        <div class="box">The final result (combination of all levels): <br><img src="Part2-3/oraple/mix_stack_combined.jpg" width="260" class="im"></div>
+    </div>
+
+    <h2>Part 2.4</h2>
+    <p>Here are some results of blending two images: </p>
+    <div class="container">
+        <div class="box">image 1: <br><img src="Part2-4/oraple/A.jpeg" width="260" class="im"></div>
+        <div class="box">image 2: <br><img src="Part2-4/oraple/B.jpeg" width="260" class="im"></div>
+        <div class="box">blended: <br><img src="Part2-4/oraple/mix_stack_combined.jpg" width="260" class="im"></div>
+        <div class="box">mask: <br><img src="Part2-4/oraple/mask.jpg" width="260" class="im"></div>
+    </div> 
+    <div class="container">
+        <div class="box">image 1: <br><img src="Part2-4/ghost/A.jpg" width="260" class="im"></div>
+        <div class="box">image 2: <br><img src="Part2-4/ghost/B.jpg" width="260" class="im"></div>
+        <div class="box">blended: <br><img src="Part2-4/ghost/mix_stack_combined.jpg" width="260" class="im"></div>
+        <div class="box">mask: <br><img src="Part2-4/ghost/mask.jpg" width="260" class="im"></div>
+    </div>
+    <div class="container">
+        <div class="box">image 1: <br><img src="Part2-4/train/A.jpg" width="520" class="im"></div>
+        <div class="box">image 2: <br><img src="Part2-4/train/B.jpg" width="520" class="im"></div>
+        <div class="box">blended: <br><img src="Part2-4/train/mix_stack_combined.jpg" width="520" class="im"></div>
+        <div class="box">mask: <br><img src="Part2-4/train/mask.jpg" width="520" class="im"></div>
+    </div>
+    <p>
+        The table below shows the intermediate steps of the last example. 
+        The structure of the table is same as above. 
+    </p>
+    <div class="container">
+        <div class="box2"><img src="Part2-4/train/A G0.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/A L0.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/A cut0.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/mix 0.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B cut0.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B L0.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B G0.jpg" width="150" class="im2"></div>
+    </div> 
+    <div class="container">
+        <div class="box2"><img src="Part2-4/train/A G2.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/A L2.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/A cut2.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/mix 2.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B cut2.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B L2.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B G2.jpg" width="150" class="im2"></div>
+    </div>
+    <div class="container">
+        <div class="box2"><img src="Part2-4/train/A G4.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/A L4.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/A cut4.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/mix 4.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B cut4.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B L4.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B G4.jpg" width="150" class="im2"></div>
+    </div>
+    <div class="container">
+        <div class="box2"><img src="Part2-4/train/A G6.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/A L6.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/A cut6.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/mix 6.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B cut6.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B L6.jpg" width="150" class="im2"></div>
+        <div class="box2"><img src="Part2-4/train/B G6.jpg" width="150" class="im2"></div>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <h2>References</h2>
+        <h4>numpy</h4>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.reshape.html">numpy.reshape</a><br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.dsplit.html">numpy.dsplit</a><br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.dstack.html">numpy.dstack</a><br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.min.html">numpy.min</a><br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.square.html">numpy.square</a> <br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.heaviside.html">numpy.heaviside</a><br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.concat.html">numpy.concat</a><br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html">numpy.arange</a><br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.matmul.html">numpy.matmul</a><br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.transpose.html">numpy.transpose</a><br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.clip.html">numpy.clip</a> <br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.zeros.html">numpy.zeros</a><br>
+            <a href="https://numpy.org/doc/stable/reference/generated/numpy.mean.html">numpy.mean</a><br>
+        <h4>scipy</h4>
+            <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.convolve2d.html">signal.convolve2d</a><br>
+        <h4>geeksforgeeks</h4>
+            <a href="https://www.geeksforgeeks.org/python-opencv-getgaussiankernel-function/">Python OpenCV – getgaussiankernel() Function</a><br>
+        <h4>stackoverflow</h4>
+            <a href="https://stackoverflow.com/questions/69150202/reshaping-png-image-read-by-skimage-imread-return-valueerror">Reshaping png image read by skimage.imread return ValueError</a><br>
+            <a href="https://stackoverflow.com/questions/53485221/numpy-multiply-array-with-scalar">Numpy, multiply array with scalar</a><br>
+            <a href="https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points">Limiting floats to two decimal points</a><br>
+            <a href="https://stackoverflow.com/questions/3985619/how-to-calculate-a-logistic-sigmoid-function-in-python">How to calculate a logistic sigmoid function in Python?</a><br>
+</body>
+</html>
